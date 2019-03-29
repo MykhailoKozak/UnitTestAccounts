@@ -1,5 +1,6 @@
 INSERT INTO user_model (email, first_name, last_name, password, user_role) VALUES
-('tommy.johnson@gmail.com', 'Tommy', 'Johnson', '1111', 'USER');
+('tommy.johnson@gmail.com', 'Tommy', 'Johnson', '1111', 'USER'),
+('mykhailokozak@gmail.com', 'Mykhailo', 'Kozak', '2222', 'USER');
 
 
 INSERT INTO account_model (code, name, balance, url_to_image) VALUES
@@ -10,7 +11,8 @@ INSERT INTO account_model (code, name, balance, url_to_image) VALUES
 INSERT INTO user_model_accounts (user_model_email, accounts_code) VALUES
 ('tommy.johnson@gmail.com', 'pharma-group'),
 ('tommy.johnson@gmail.com', 'samsung-electronics'),
-('tommy.johnson@gmail.com', 'nokia-lumia');
+('tommy.johnson@gmail.com', 'nokia-lumia'),
+('mykhailokozak@gmail.com', 'samsung-electronics');
 
 
 INSERT INTO transaction_model (id, app_transaction_status, committed, created, from_current_balance, from_target_balance, to_current_balance, to_target_balance, transaction_code, transaction_value, from_account_code, to_account_code) VALUES

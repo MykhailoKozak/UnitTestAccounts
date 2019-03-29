@@ -22,3 +22,36 @@ Feature: User operations feature
       | email     | tommy.johnson@gmail.com |
       | userRole  | USER                    |
 
+  Scenario: Ability for new user to register
+    When send user registration request with attributes:
+      | firstName | Mykhailo                |
+      | lastName  | Kozak                   |
+      | email     | mykhailokozak@gmail.com |
+      | password  | 2222                    |
+    Then user model exists in database with attributes:
+      | firstName | Mykhailo                |
+      | lastName  | Kozak                   |
+      | email     | mykhailokozak@gmail.com |
+      | password  | 2222                    |
+
+#  Scenario: Ability for user to log in
+#    When send user login request with attributes:
+#      | email    | mykhailokozak@gmail.com |
+#      | password | 2222                    |
+#    Then session contains info about session user:
+#      | firstName | Mykhailo                |
+#      | lastName  | Kozak                   |
+#      | email     | mykhailokozak@gmail.com |
+#      | userRole  | USER                    |
+
+  Scenario: Ability for failed user to register
+    When send user registration request with attributes:
+      | firstName | Mykhailo                |
+      | lastName  | Kozak                   |
+      | email     | mykhailokozak@gmail.com |
+      | password  | 2222                    |
+    Then user model exists in database with failed attributes:
+      | firstName | Mykhailo                |
+      | lastName  | Kozak                   |
+      | email     | mykhailokozak@gmail.com |
+      | password  | 5555                    |

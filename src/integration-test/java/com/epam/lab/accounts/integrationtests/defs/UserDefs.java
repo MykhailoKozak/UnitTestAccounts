@@ -15,7 +15,7 @@ import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class UserDefs {
 
@@ -43,6 +43,15 @@ public class UserDefs {
         assertEquals(actualUserModel.getLastName(), expectedUserModel.getLastName());
         assertEquals(actualUserModel.getEmail(), expectedUserModel.getEmail());
         assertEquals(actualUserModel.getPassword(), expectedUserModel.getPassword());
+    }
+
+    @Then("user model exists in database with failed attributes:")
+    public void userModelExistsInDatabaseWithFailedAttributes(final DataTable dataTable) {
+        final UserModel expectedUserModel = CucumberUtils.toObject(dataTable, UserModel.class);
+        final UserModel actualUserModel = userService.getUserModelForEmail(expectedUserModel.getEmail());
+
+        assertTrue(actualUserModel.getEmail().equals(expectedUserModel.getEmail()));
+        assertFalse(actualUserModel.getPassword().equals(expectedUserModel.getPassword()));
     }
 
     @When("send user login request with attributes:")
