@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/e2e-test/resources/UserAccountE2E.feature",
+        features = "src/e2e-test/resources/NewUserAccountE2E.feature",
         glue = {
                 "com.epam.lab.accounts.e2e.defs",
                 "com.epam.lab.accounts.integrationtests.defs",
